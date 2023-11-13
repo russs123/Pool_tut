@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://u2scvlyupk0a"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_0e5bp"]
+[ext_resource type="PackedScene" uid="uid://bu8l68d7tm2ta" path="res://scenes/table.tscn" id="1_kyu7g"]
+[ext_resource type="PackedScene" uid="uid://bj0rh87bwagtv" path="res://scenes/pool_ball.tscn" id="2_fqn7w"]
+[ext_resource type="PackedScene" uid="uid://djorop55t35aa" path="res://scenes/cue.tscn" id="4_deyx0"]
+[ext_resource type="Script" path="res://scenes/PowerBar.gd" id="5_2rjyh"]
+[ext_resource type="PackedScene" uid="uid://56aitqm11pdc" path="res://scenes/hud.tscn" id="6_yg7l3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7mb7"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0ub1"]
+bg_color = Color(1, 1, 1, 0.458824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85ov3"]
+bg_color = Color(0.909804, 0, 0.254902, 1)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0e5bp")
+ball_scene = ExtResource("2_fqn7w")
+
+[node name="Table" parent="." instance=ExtResource("1_kyu7g")]
+
+[node name="PottedPanel" type="Panel" parent="."]
+offset_top = 678.0
+offset_right = 1200.0
+offset_bottom = 778.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7mb7")
+
+[node name="Cue" parent="." instance=ExtResource("4_deyx0")]
+
+[node name="PowerBar" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = 191.0
+offset_top = 147.0
+offset_right = 291.0
+offset_bottom = 177.0
+theme_override_styles/background = SubResource("StyleBoxFlat_b0ub1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_85ov3")
+show_percentage = false
+script = ExtResource("5_2rjyh")
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = 950.0
+offset_top = 675.0
+offset_right = 1080.0
+offset_bottom = 727.0
+theme_override_font_sizes/font_size = 35
+text = "LIVES: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShotsLabel" type="Label" parent="."]
+offset_left = 940.0
+offset_top = 720.0
+offset_right = 1091.0
+offset_bottom = 772.0
+theme_override_font_sizes/font_size = 35
+text = "SHOTS: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hud" parent="." instance=ExtResource("6_yg7l3")]
+process_mode = 2
+
+[connection signal="shoot" from="Cue" to="." method="_on_cue_shoot"]

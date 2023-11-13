@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj0rh87bwagtv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2ad0"]
+bounce = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4iepn"]
+radius = 18.0
+
+[node name="PoolBall" type="RigidBody2D" groups=["balls"]]
+physics_material_override = SubResource("PhysicsMaterial_d2ad0")
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4iepn")

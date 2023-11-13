@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://56aitqm11pdc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb10x"]
+bg_color = Color(0, 0.341176, 0.403922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl6vr"]
+bg_color = Color(0.431373, 0.14902, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_px81k"]
+bg_color = Color(0.615686, 0, 0.466667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srxxe"]
+bg_color = Color(0.486275, 0.0941176, 0, 1)
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="ResultPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb10x")
+
+[node name="ResultLabel" type="Label" parent="ResultPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -187.5
+offset_top = 25.0
+offset_right = 187.5
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "YOU WIN!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="ResultPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_wl6vr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_px81k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_srxxe")
+text = "RESTART"
